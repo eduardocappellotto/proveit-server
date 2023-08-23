@@ -25,4 +25,4 @@ const resolutionSchema = new mongoose.Schema({
     }
 });
 
-const Resolution = mongoose.model('Resolution', resolutionSchema);
+export const Resolution = mongoose.model('Resolution', resolutionSchema);
