@@ -1,25 +1,33 @@
-import { Schema, Document, model } from 'mongoose';
+import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
+import mongoose, { Document } from 'mongoose';
+import { Question, QuestionSchema } from './question.schema';
+import { IsNotEmpty } from 'class-validator';
+import { Transform } from 'class-transformer';
 
-interface IQuestion {
-    questionText: string;
-    options: string[];
-    correctOption: number;
+export type ExamDocument = Exam & Document;
+
+export type ExamList = {
+    title: string,
+    questionCount: number,
+
 }
 
-export interface IExam extends Document {
+@Schema()
+export class Exam {
+
+    @Prop({ required: true })
     title: string;
-    questions: IQuestion[];
+
+    @Prop({ type: [QuestionSchema], required: true })
+    @IsNotEmpty()
+    questions: Question[];
+
+    @Prop({ type: Boolean, default: false })
+    @Transform(({ value }) => value === 'true')
+    isPublished: boolean;
+
+    @Prop({ type: Boolean, default: false })
+    isDeleted: boolean;
 }
 
-const QuestionSchema: Schema = new Schema({
-    questionText: { type: String, required: true },
-    options: { type: [String], required: true },
-    correctOption: { type: Number, required: true }
-});
-
-const ExamSchema: Schema = new Schema({
-    title: { type: String, required: true },
-    questions: { type: [QuestionSchema], required: true }
-});
-
-export const Exam = model<IExam>('Exam', ExamSchema);
+export const ExamSchema = SchemaFactory.createForClass(Exam);

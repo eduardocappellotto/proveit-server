@@ -1,15 +1,34 @@
-import { Schema, Document, model } from 'mongoose';
+
+import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
+
+type RolesEnum = 'ADMIN' | 'ALUNO';
 
 export interface IUser extends Document {
-    matricula: string;
+    registration: string;
     password: string;
-    role: 'admin' | 'aluno';
+    role: RolesEnum
 }
 
-const UserSchema: Schema = new Schema({
-    matricula: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    role: { type: String, required: true, enum: ['admin', 'aluno'] }
-});
+@Schema()
+export class User {
+    @Prop({ required: true })
+    registration: string;
 
-export const User = model<IUser>('User', UserSchema);
+    @Prop({ required: true })
+    password: string;
+
+    @Prop({
+        required: true,
+        enum: ['ADMIN', 'ALUNO'],
+        validate: {
+            validator: function (v) {
+                return ['ADMIN', 'ALUNO'].includes(v);
+            },
+            message: (props) => `${props.value} não é uma role válida!`
+        }
+    })
+    role: RolesEnum;
+}
+
+export const UserSchema = SchemaFactory.createForClass(User);

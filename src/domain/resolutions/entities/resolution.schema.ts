@@ -1,28 +1,27 @@
-import * as mongoose from 'mongoose'
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
-const resolutionSchema = new mongoose.Schema({
-    studentId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Student',
-        required: true
-    },
-    examId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Exam',
-        required: true
-    },
-    answers: [{
-        questionId: mongoose.Schema.Types.ObjectId,
-        selectedOption: Number
-    }],
-    score: {
-        type: Number,
-        required: true
-    },
-    timestamp: {
-        type: Date,
-        default: Date.now
-    }
-});
+@Schema()
+export class Resolution extends Document {
 
-export const Resolution = mongoose.model('Resolution', resolutionSchema);
+    @Prop({ required: true, ref: 'Exam' })
+    examId: string;
+
+    @Prop({ required: true })
+    userId: string;
+
+    @Prop({ default: Date.now })
+    startedAt: Date;
+
+    @Prop({ type: [{ questionId: String, answer: Number }] })
+    answers: Array<{ questionId: string, answer: number }>;
+
+    @Prop({ default: null })
+    finishedAt: Date;
+
+    @Prop({ default: null })
+    grade: number;
+
+}
+
+export const ResolutionSchema = SchemaFactory.createForClass(Resolution);

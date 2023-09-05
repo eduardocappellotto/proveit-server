@@ -8,8 +8,12 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() body) {
-    return { token: await this.authService.login(body.registration, body.password) };
+    return await this.authService.login(body.registration, body.password)
   }
 
+  @Post('validate')
+  async validateToken(@Body('token') token: string) {
+    return this.authService.validateToken(token);
+  }
 
 } 

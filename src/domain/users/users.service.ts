@@ -1,26 +1,28 @@
-import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { UserRepository } from './repositories/user.repository';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  constructor(private readonly userRepository: UserRepository) { }
+
+  async create(userDto: any): Promise<any> {
+    try {
+      const hashedPassword = await bcrypt.hash(userDto.password, 10);
+      const user = await this.userRepository.create({
+        ...userDto,
+        password: hashedPassword,
+      });
+      return { registration: user.registration, role: user.role };
+    } catch (error) {
+      throw error
+    }
+
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async findByRegistration(registration: string): Promise<any> {
+    return this.userRepository.findByRegistration(registration);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
-  }
 }

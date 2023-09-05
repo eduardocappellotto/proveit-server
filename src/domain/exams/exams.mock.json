@@ -1,0 +1,71 @@
+[
+    {
+        "title": "English Test",
+        "questions": [
+            {
+                "content": "Which word is a synonym for 'happy'?",
+                "options": [
+                    "Sad",
+                    "Joyful",
+                    "Angry",
+                    "Bored",
+                    "Tired"
+                ],
+                "correctOption": 1
+            },
+            {
+                "content": "What's the past tense of 'go'?",
+                "options": [
+                    "Going",
+                    "Went",
+                    "Goes",
+                    "Gone",
+                    "Goed"
+                ],
+                "correctOption": 1
+            }
+        ],
+        "isPublished": false,
+        "isDeleted": false
+    },
+    {
+        "title": "Exame de Matemática",
+        "questions": [
+            {
+                "text": "Qual é a soma de 2 + 2?",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ],
+                "correctOption": 3
+            },
+            {
+                "text": "Qual é a raiz quadrada de 16?",
+                "options": [
+                    "2",
+                    "4",
+                    "6",
+                    "8",
+                    "10"
+                ],
+                "correctOption": 1
+            },
+            {
+                "text": "Qual é o resultado de 5 x 5?",
+                "options": [
+                    "10",
+                    "15",
+                    "20",
+                    "25",
+                    "30"
+                ],
+                "correctOption": 3
+            }
+        ],
+        "isPublished": false,
+        "isDeleted": false
+    }
+]
