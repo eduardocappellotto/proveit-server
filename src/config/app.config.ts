@@ -1,4 +1,5 @@
 export default () => ({
     JWT_SECRET: process.env.JWT_SECRET,
-    MONGODB_CONNECTION_STRING: process.env.MONGODB_CONNECTION_STRING
+    MONGODB_CONNECTION_STRING: process.env.MONGODB_CONNECTION_STRING,
+    PORT: process.env.PORT,
 })

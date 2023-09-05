@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { BadRequestException, ValidationError, ValidationPipe } from '@nestjs/common'
 import { AppModule } from './app.module';
 import * as morgan from 'morgan'
+import appConfig from './config/app.config';
 
 
 async function bootstrap() {
@@ -30,6 +31,6 @@ async function bootstrap() {
     credentials: true,
   });
 
-  await app.listen(process.env.PORT, '0.0.0.0');
+  await app.listen(appConfig().PORT);
 }
 bootstrap();
