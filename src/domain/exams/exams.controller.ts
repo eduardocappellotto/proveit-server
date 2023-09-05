@@ -20,7 +20,8 @@ export class ExamController {
       let examsFormat = data.map(exam => ({
         title: exam.title,
         questionCount: exam.questions.length,
-        _id: exam._id
+        _id: exam._id,
+        isPublished: exam.isPublished
       }));
 
       return { status: 'success', message: `${CURRENT_DOMAIN}'s fetched successfully`, data: examsFormat, count: data.length ? data.length : 0 };

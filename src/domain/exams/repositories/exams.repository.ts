@@ -15,7 +15,12 @@ export class ExamRepository {
     }
 
     async findAll(isPublished?: boolean): Promise<Exam[]> {
-        let query = { isDeleted: false, isPublished: isPublished };
+        let query = {};
+        if (isPublished) {
+            query = { isDeleted: false, isPublished: isPublished };
+        } else {
+            query = { isDeleted: false };
+        }
 
         return this.examModel.find(query).exec();
     }
