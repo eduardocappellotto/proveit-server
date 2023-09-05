@@ -31,6 +31,6 @@ async function bootstrap() {
     credentials: true,
   });
 
-  await app.listen(appConfig().PORT);
+  await app.listen(appConfig().PORT, '0.0.0.0');
 }
 bootstrap();
