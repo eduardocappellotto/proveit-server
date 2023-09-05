@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "5edfee61-c842-4b42-a0ec-3fec03192323",
+		"name": "Prove.it",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10444105"
+	},
+	"item": [
+		{
+			"name": "exams",
+			"item": [
+				{
+					"name": "Cria Prova",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Exame Avançado de Matemática 3\",\r\n    \"questions\": [\r\n        {\r\n            \"text\": \"Qual é a soma de 2 + 2?\",\r\n            \"options\": [\r\n                \"1\",\r\n                \"2\",\r\n                \"3\",\r\n                \"4\",\r\n                \"5\"\r\n            ],\r\n            \"correctOption\": 3\r\n        },\r\n        {\r\n            \"text\": \"Qual é a raiz quadrada de 16?\",\r\n            \"options\": [\r\n                \"2\",\r\n                \"4\",\r\n                \"6\",\r\n                \"8\",\r\n                \"10\"\r\n            ],\r\n            \"correctOption\": 1\r\n        },\r\n        {\r\n            \"text\": \"Qual é o resultado de 5 x 5?\",\r\n            \"options\": [\r\n                \"10\",\r\n                \"15\",\r\n                \"20\",\r\n                \"25\",\r\n                \"30\"\r\n            ],\r\n            \"correctOption\": 3\r\n        },\r\n        {\r\n            \"text\": \"Quanto é 7 - 3?\",\r\n            \"options\": [\r\n                \"2\",\r\n                \"3\",\r\n                \"4\",\r\n                \"5\",\r\n                \"6\"\r\n            ],\r\n            \"correctOption\": 2\r\n        },\r\n        {\r\n            \"text\": \"Qual é a raiz quadrada de 81?\",\r\n            \"options\": [\r\n                \"6\",\r\n                \"7\",\r\n                \"8\",\r\n                \"9\",\r\n                \"10\"\r\n            ],\r\n            \"correctOption\": 3\r\n        },\r\n        {\r\n            \"text\": \"Quanto é 10 / 2?\",\r\n            \"options\": [\r\n                \"4\",\r\n                \"5\",\r\n                \"6\",\r\n                \"7\",\r\n                \"8\"\r\n            ],\r\n            \"correctOption\": 1\r\n        },\r\n        {\r\n            \"text\": \"Qual é o resultado de 3 x 4?\",\r\n            \"options\": [\r\n                \"10\",\r\n                \"11\",\r\n                \"12\",\r\n                \"13\",\r\n                \"14\"\r\n            ],\r\n            \"correctOption\": 2\r\n        },\r\n        {\r\n            \"text\": \"Quanto é 8 + 6?\",\r\n            \"options\": [\r\n                \"12\",\r\n                \"13\",\r\n                \"14\",\r\n                \"15\",\r\n                \"16\"\r\n            ],\r\n            \"correctOption\": 2\r\n        },\r\n        {\r\n            \"text\": \"Qual é a raiz quadrada de 64?\",\r\n            \"options\": [\r\n                \"6\",\r\n                \"7\",\r\n                \"8\",\r\n                \"9\",\r\n                \"10\"\r\n            ],\r\n            \"correctOption\": 2\r\n        },\r\n        {\r\n            \"text\": \"Qual é o resultado de 6 x 6?\",\r\n            \"options\": [\r\n                \"30\",\r\n                \"31\",\r\n                \"32\",\r\n                \"36\",\r\n                \"37\"\r\n            ],\r\n            \"correctOption\": 3\r\n        }\r\n    ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/exams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"exams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publica Prova",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"shouldPublish\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/exams/64ec47692ca5de9d5a40d090/publish",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"exams",
+								"64ec47692ca5de9d5a40d090",
+								"publish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista todas as provas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/exams?isPublished=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"exams"
+							],
+							"query": [
+								{
+									"key": "isPublished",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca prova por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/exams/64e7e3901a2baa7d4c5ec90f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"exams",
+								"64e7e3901a2baa7d4c5ec90f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "resolutions",
+			"item": [
+				{
+					"name": "Começar resolução",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"examId\": \"64ec01974ae9f92cb8c809c9\",\r\n    \"userId\": \"64e7a8f8eeb98b079468972d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/resolutions/start",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"resolutions",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca resolução por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/resolutions/64e7a8f8eeb98b079468972d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"resolutions",
+								"64e7a8f8eeb98b079468972d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca resoluções de um usuário",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/resolutions/list/64ec1a422414704638edbea7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"resolutions",
+								"list",
+								"64ec1a422414704638edbea7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Entregar resolucao",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"answers\": [\r\n        {\r\n            \"questionId\": \"64e7e3901a2baa7d4c5ec910\",\r\n            \"answer\": 3\r\n        },\r\n        {\r\n            \"questionId\": \"64e7e3901a2baa7d4c5ec911\",\r\n            \"answer\": 1\r\n        },\r\n        {\r\n            \"questionId\": \"64e7e3901a2baa7d4c5ec912\",\r\n            \"answer\": 3\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/resolutions/finish/64ec28bc4ceeff322d828403",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"resolutions",
+								"finish",
+								"64ec28bc4ceeff322d828403"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"registration\":\"TESTE3\",\r\n    \"password\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Valida JWT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGVjMWE0MjI0MTQ3MDQ2MzhlZGJlYTciLCJ1c2VybmFtZSI6IkFsdW5vMSIsInJvbGUiOiJBTFVOTyIsImlhdCI6MTY5MzE5NjQ0OSwiZXhwIjoxNjkzMjAwMDQ5fQ.DS0sBfyPiT6fR9VsR4kiz2u8wrXtzj2qhlidRNiHhnQ\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/validate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"validate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registra Usuário",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG4iLCJzdWIiOjEsImlhdCI6MTY5Mjc1NjI5NCwiZXhwIjoxNjkyNzU2MzU0fQ.C4_5cGY_OXNg1mVjGRistFQaC_agIvB1pxXx5O9dGo8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"registration\":\"Aluno1\",\r\n    \"password\": \"teste\",\r\n    \"role\": \"ALUNO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
