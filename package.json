@@ -1,9 +1,8 @@
 {
-  "name": "live-nest-auth",
+  "name": "prove-it",
   "version": "0.0.1",
   "description": "",
   "author": "",
-  "private": true,
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
